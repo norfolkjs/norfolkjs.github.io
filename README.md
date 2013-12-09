@@ -1,4 +1,4 @@
 norfolkjs.github.io
 ===================
 
-Blog for Norfolk.js
+Information site for the Norfolk.js meetup group.
