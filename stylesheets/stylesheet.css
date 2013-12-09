@@ -245,3 +245,9 @@ a {
 .cf {
   zoom:1;
 }
+
+.posts h3 {
+  font-size: 18px;
+  font-weight: 300;
+  color: #666;
+}
