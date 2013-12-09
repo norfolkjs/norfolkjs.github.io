@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
-    <title>Norfolkjs.github.io by norfolkjs</title>
+    <title>Norfolk.js</title>
   </head>
 
 <body>
@@ -34,22 +34,32 @@
     http://www.meetup.com/norfolkjs</a></p>
 
   <h3>
-  <a name="contact" class="anchor" href="#contact"><span class="octicon octicon-link"></span></a>Contact</h3>
+    <a name="contact" class="anchor" href="#contact">
+      <span class="octicon octicon-link">
+    </span></a>Contact
+  </h3>
 
-  <p>Tweet us: <a href="https://github.com/norfolkjs" class="user-mention">@norfolkjs</a>
+  <p>Tweet us: <a href="https://github.com/norfolkjs"
+    class="user-mention">@norfolkjs</a>
   </p>
 
-  <ul>
+  <br>
+
+  <h3>
+  <a name="posts" class="anchor" href="#posts"><span class="octicon octicon-link"></span></a>Recent Posts</h3>
+
+  <div>
     {% for post in site.posts %}
-      <li>
-        <h4>{{ post.title }}</h4>
+        <hr>
+        <p>{{ post.title }}</p>
         <p>{{ post.content }}</p>
-      </li>
     {% endfor %}
-  </ul>
+  </div>
 
   </section>
 </div>
+
+{% include footer.html %}
 
 </body>
 </html>

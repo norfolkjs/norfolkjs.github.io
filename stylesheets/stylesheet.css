@@ -35,7 +35,7 @@ li {
    h2       - project description
 */
 
-header {
+header, footer {
   background: rgba(0, 0, 0, 0.1);
   width: 100%;
   border-bottom: 1px dashed #b5e853;
