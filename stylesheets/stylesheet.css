@@ -37,7 +37,6 @@ li {
 
 header, footer {
   background: rgba(0, 0, 0, 0.1);
-  display: inline-block;
   width: 100%;
   border-bottom: 1px dashed #e1ae45;
   padding: 20px 0;
