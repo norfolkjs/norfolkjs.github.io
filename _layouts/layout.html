@@ -22,7 +22,7 @@
         <span class="octicon octicon-link"></span></a>About
     </h3>
 
-  <p>NorfolkJs is a JavaScript development user group in Norfolk, VA.</p>
+  <p>Norfolk.js is a JavaScript development user group in Norfolk, VA.</p>
 
   <p>We want to get local developers together to consume pizza and beer and talk about anything and everything JavaScript.</p>
 
@@ -38,21 +38,10 @@
   <h3>
     <a name="contact" class="anchor" href="#contact">
       <span class="octicon octicon-link">
-    </span></a>Contact
+    </span></a>Want to sponsor a meetup or speak?
   </h3>
 
-  <p>Tweet us: <a href="https://twitter.com/norfolkjs"
-    class="user-mention">@norfolkjs</a>
-  </p>
-
-  <br>
-  <h3>
-    <a name="sponsor" class="anchor" href="#sponsor">
-      <span class="octicon octicon-link">
-    </span></a>Want to Sponsor a meetup or Speak?
-  </h3>
-
-  <p>Contact the organizers:</p>
+  <p>Contact us:</p>
   <p>Travis Webb</p>
    Github: <a href="http://github.com/tjwebb" class="user-mention">@tjwebb</a>
    Twitter: <a href="https://twitter.com/traviswebbusa" class="user-mention">@traviswebbusa</a>
@@ -70,9 +59,9 @@
   <div class="posts">
     {% for post in site.posts %}
         <hr>
-        <h3>{{ post.title }}</h3>
+        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
         <p>{{ post.date | date: '%B %d, %Y' }}</p>
-        <p>{{ post.content }}</p>
+        <p>{{ post.excerpt }}</p>
         <br>
     {% endfor %}
   </div>

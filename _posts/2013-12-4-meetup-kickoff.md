@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Norfolk.js meetup kickoff
 tags: javascript, meetup, norfolk
 published: true

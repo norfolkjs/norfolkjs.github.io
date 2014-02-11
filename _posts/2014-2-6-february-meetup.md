@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: February meetup
 tags: javascript, meetup, norfolk, xtuple, grow
 published: true
