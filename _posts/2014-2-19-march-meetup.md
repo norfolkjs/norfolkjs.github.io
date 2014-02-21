@@ -10,5 +10,5 @@ published: true
 at <a href="http://www.thebirchbar.com/">The Birch Bar</a>
 
 <p>
-This is a social gathering to get together, drink beer, and talk about Javascript. Now Norfolk has a chapter of <a href="www.beerjs.com!">BeerJS</a>
+This is a social gathering to get together, drink beer, and talk about Javascript. Now Norfolk has a chapter of <a href="www.beerjs.com!">Beer.JS</a>
 </p>
