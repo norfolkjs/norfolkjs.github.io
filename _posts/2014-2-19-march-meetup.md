@@ -6,7 +6,7 @@ published: true
 ---
 
 <p>The March meetup for the Norfolk.js group will be</p>
-<a href="http://www.meetup.com/NorfolkJS/events/166628432/">February 17, 2014</a>
+<a href="http://www.meetup.com/NorfolkJS/events/166628432/">March 19, 2014</a>
 at <a href="http://www.thebirchbar.com/">The Birch Bar</a>
 
 <p>
