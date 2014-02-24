@@ -5,9 +5,9 @@ tags: javascript, meetup, norfolk
 published: true
 ---
 
-Here is a summary of the topics covered by the Monday NorfolkJS Meetup. Steve Shackbarth presented Sharpen your Saw, discussing problem-solving using Javascript and other useful utilities.
+Here's a summary of the topics covered by the Monday Norfolk.js meetup: 
 
-Participants were encouraged to bring laptops to participate in code exercises.
+Steve Shackbarth presented Sharpen your Saw, discussing problem-solving using Javascript and other useful utilities. Participants were encouraged to bring laptops to participate in code exercises.
 
 <li> Participants could use <a href="http://jsfiddle.net">jsfiddle.net</a></li>
 <li>   Some of the utilities used were underscore.js and mocha.js tests.</li>
