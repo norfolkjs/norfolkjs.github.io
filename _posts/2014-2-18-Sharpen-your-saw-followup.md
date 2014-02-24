@@ -29,5 +29,5 @@ Two Exercises Discussed
 <p> Second Exercise</p>
 <script src="https://gist.github.com/stanzheng/9086326.js"></script>
 <p>
-Be sure to join us Next Month for BeerJS
+Be sure to join us Next Month for Beer.js
 </p>
