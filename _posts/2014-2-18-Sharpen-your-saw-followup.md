@@ -19,7 +19,7 @@ Two Exercises Discussed
 <li>   Write a function that determines the longest word creatable with just left handed letters.</li>
 
 <p>The following video was shot using Google Glass; it is cut up into 3 primary segments</p>
-<a href="#">-Coming Soon...-</a>
+<a href="http://youtu.be/zQYhInrIOVE">-Problem and Solution Explainations-</a>
 
 
 
