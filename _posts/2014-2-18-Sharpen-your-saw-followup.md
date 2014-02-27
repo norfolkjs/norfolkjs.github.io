@@ -22,7 +22,9 @@ Two Exercises Discussed
 <p>The following video was shot using Google Glass; it is cut up into 3 primary segments</p>
 <a href="http://youtu.be/zQYhInrIOVE">-Problem and Solution Explainations-</a>
 
-
+<p>Link to the Gists </p>
+<a href="https://gist.github.com/stanzheng/9086335">-Left handed Words Validator-</a>
+<a href="https://gist.github.com/stanzheng/9086326">-Longest Left Hand Word Generator-</a>
 
 <p> First Problem</p>
 <script src="https://gist.github.com/stanzheng/9086335.js"></script>
