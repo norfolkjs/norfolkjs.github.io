@@ -10,5 +10,5 @@ excerpt: <p>The March meetup will be <a href="http://www.meetup.com/NorfolkJS/ev
 <a href="http://www.meetup.com/NorfolkJS/events/166628432/">March 19, 2014</a> at <a href="http://www.thebirchbar.com/">The Birch Bar</a>
 
 <p>
-This is a social gathering to get together, drink beer, and talk about Javascript. Now Norfolk has a chapter of <a href="www.beerjs.com!">Beer.JS</a>
+This is a social gathering to get together, drink beer, and talk about Javascript. Now Norfolk has a chapter of <a href="https://github.com/beerjs/orf">Beer.JS</a>
 </p>
