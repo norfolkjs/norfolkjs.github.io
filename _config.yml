@@ -8,4 +8,3 @@ plugins:     ./_plugins
 future:      true
 markdown:    maruku
 permalink:   date
-pygments:    true
