@@ -1,3 +1,4 @@
 _site/
+*.old
 Gemfile
 Gemfile.lock
