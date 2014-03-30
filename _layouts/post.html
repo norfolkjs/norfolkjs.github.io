@@ -1,39 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="../../../stylesheets/stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="../../../stylesheets/pygment_trac.css" media="screen" />
-
-    <title>Norfolk.js</title>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-49239066-1', 'norfolkjs.org');
-      ga('send', 'pageview');
-    </script>
-  </head>
-
-  <body>
-
-    <!-- MAIN CONTENT -->
-    <div class="container" class="outer">
-      <section id="main_content" class="inner">
-
-        <h2>{{ page.title }}</h2>
-
-        <p>{{ page.content }}</p>
-
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    {% include footer.html %}
-
-  </body>
-</html>
+---
+layout: layout
+---
+  <h2>{{ page.title }}</h2>
+  <p>{{ page.content }}</p>
