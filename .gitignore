@@ -2,4 +2,4 @@ _site/
 *.old
 Gemfile
 Gemfile.lock
-.DS_Store
+*.DS_Store
