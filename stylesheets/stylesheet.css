@@ -35,7 +35,7 @@ li {
    h2       - project description
 */
 
-header, footer {
+header {
   background: rgba(0, 0, 0, 0.1);
   width: 100%;
   border-bottom: 1px dashed #e1ae45;
@@ -67,6 +67,19 @@ header h2 {
   font-size: 18px;
   font-weight: 300;
   color: #666;
+}
+
+footer {
+  border-top: 1px dashed #e1ae45;
+  text-align: center;
+  line-height: 3;
+}
+
+footer h2 {
+  display: inline;
+  margin: 0 5px 0 0;
+  font-family: Terminal, monospace;
+  font-size: 12px
 }
 
 #downloads .btn {

@@ -1,12 +1,12 @@
 ---
 layout: post
 title: Sharpen Your Saw Follow-up
-tags: javascript, meetup, norfolk, shackbarth, 
+tags: javascript, meetup, norfolk, shackbarth,
 published: true
-excerpt: Steve Shackbarth presented Sharpen your Saw, discussing problem-solving using Javascript and other useful utilities. Participants were encouraged to bring laptops to participate in code exercises. 
+excerpt: Steve Shackbarth presented Sharpen your Saw, discussing problem-solving using Javascript and other useful utilities. Participants were encouraged to bring laptops to participate in code exercises.
 ---
 
-Here's a summary of the topics covered by the Monday Norfolk.js meetup: 
+Here's a summary of the topics covered by the Monday Norfolk.js meetup:
 
 Steve Shackbarth presented Sharpen your Saw, discussing problem-solving using Javascript and other useful utilities. Participants were encouraged to bring laptops to participate in code exercises.
 
