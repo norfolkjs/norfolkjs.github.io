@@ -9,7 +9,7 @@ excerpt: This is an unofficial, but pretty good US (east) mirror for npm; this s
 <p><a href="https://github.com/norfolkjs/npmjs.us">https://github.com/norfolkjs/npmjs.us</a></p>
 
 <p>This is an unofficial, but pretty good US (east) mirror for npm;
-this service is sponsored and maintained by norfolkjs.org.</p>
+this service is sponsored and maintained by Norfolk.js</p>
 
 <p>Modus Operandi</p>
 
