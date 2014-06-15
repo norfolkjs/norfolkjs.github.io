@@ -9,7 +9,8 @@ $.ajax({
         sig_id: true
     }
 })
-    .done(function (json) {
+    .done(
+      function (json) {
         $.each(json.results[0].sponsors, function (key,val) {
             if (!val.hasOwnProperty("redeem")) {
                 var element = $('<a>', {href: val.url, html: $('<img>', {src: val.image_url})});

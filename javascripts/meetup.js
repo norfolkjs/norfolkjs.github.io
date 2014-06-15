@@ -10,10 +10,12 @@ $.ajax({
     }
 })
     .done(function (json) {
+        console.log(json);
+        //add class, set height, width is auto
         $.each(json.results[0].sponsors, function (key,val) {
             if (!val.hasOwnProperty("redeem")) {
-                var element = $('<a>', {href: val.url, html: $('<img>', {src: val.image_url})});
-                $("#sponsors").append(element);
+                var element = $('<a>', {href: val.url, html: $('<img>', {src: val.image_url, class: "logo"})});
+                $(".sponsors").append(element);
             }
         });
     });
