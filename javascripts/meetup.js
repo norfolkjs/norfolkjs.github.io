@@ -10,18 +10,16 @@ var foo = $.ajax({
     }
 })
 .done(function (json) {
-      var items = [];
-
   $.each( json.results[0].sponsors, function( key, val ) {
     //items.push( "<li id='" + key + "'>" + val + "</li>" );
     if(!val.hasOwnProperty("redeem")){
-    var element = $('<a>', {
-          href: val.url,
-        html: $('<img>', {
-          src: val.image_url
-        })
-      });
-      $("#sponsors").append(element);
-    }
-  });
+         var element = $('<a>', {
+                href: val.url,
+              html: $('<img>', {
+                src: val.image_url
+              })
+          });
+         $("#sponsors").append(element);
+      }
+   });
 });
