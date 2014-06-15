@@ -16,7 +16,7 @@ var foo = $.ajax({
     console.log(key);
     console.log(val);
     //items.push( "<li id='" + key + "'>" + val + "</li>" );
-    items.push( "<li id='" + key + "'>" + val + "</li>" );
+    items.push( "<a id='" + val.url + "'>" + "<img src='" + val.image_url + "'>" + "</a>" );
   });
 
   $( "<ul/>", {
