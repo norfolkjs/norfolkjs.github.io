@@ -82,6 +82,10 @@ footer h2 {
   font-size: 12px
 }
 
+footer #align {
+  vertical-align:middle;
+}
+
 #downloads .btn {
   display: inline-block;
   text-align: center;
