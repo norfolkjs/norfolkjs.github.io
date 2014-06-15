@@ -10,11 +10,8 @@ var foo = $.ajax({
     }
 })
 .done(function (json) {
-    console.log(json);
       var items = [];
   $.each( json.results[0].sponsors, function( key, val ) {
-    console.log(key);
-    console.log(val);
     //items.push( "<li id='" + key + "'>" + val + "</li>" );
     if(!val.hasOwnProperty("redeem")){
       items.push( "<a href='" + val.url + "'>" + "<img src='" + val.image_url + "'>" + "</a>" );
