@@ -11,4 +11,17 @@ var foo = $.ajax({
 })
 .done(function (json) {
     console.log(json);
+      var items = [];
+  $.each( json.results[0].sponsors, function( key, val ) {
+    console.log(key);
+    console.log(val);
+    //items.push( "<li id='" + key + "'>" + val + "</li>" );
+    items.push( "<li id='" + key + "'>" + val + "</li>" );
+  });
+
+  $( "<ul/>", {
+    "class": "my-new-list",
+    html: items.join( "" )
+  }).appendTo( "#sponsors" );
+
 });
