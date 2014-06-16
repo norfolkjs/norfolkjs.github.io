@@ -1,11 +1,8 @@
 $.ajax({
     type: 'GET',
     dataType: 'jsonp',
-    url: 'http://api.meetup.com/2/events',
+    url: 'http://api.meetup.com/2/events?status=upcoming&order=time&limited_events=False&group_urlname=Norfolkjs&desc=false&offset=0&format=json&page=200&fields=&sig_id=81917392&sig=930ab80837bf42d66ba5a2e155c3d2b9347d4227',
     data: {
-        key: '5f2a61211f8735c1f612b661c263a18',
-        group_urlname: 'NorfolkJS',
-        sig_id: true
     }
 })
     .done(
