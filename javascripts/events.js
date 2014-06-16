@@ -16,8 +16,8 @@ $.ajax({
             moment.lang("en");
             var date = moment(val.time).format(" h:mma on dddd, MMMM Do");
             var rsvp = $('<h2>', {text: "Join " + val.yes_rsvp_count + " ninjas at " + date});
+            name.append(rsvp);
             var container = $('<div>', {html:name, class: "event"});
-            container.append(rsvp);
             container.append(description);
             $(".events").append(container);
         });
