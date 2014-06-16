@@ -17,8 +17,8 @@ $.ajax({
             info = jQuery.trim(info).substring(0, 250).split(" ").slice(0, -1).join(" ") + "...";
             var description = $('<p>', {text: info});
             moment.lang("en");
-            var date = moment(val.time).format("dddd, MMMM Do , h:mm a");
-            var rsvp = $('<h2>', {text: "Join " + val.yes_rsvp_count + " ninjas on" });
+            var date = moment(val.time).format(" h:mma on dddd, MMMM Do");
+            var rsvp = $('<h2>', {text: "Join " + val.yes_rsvp_count + " ninjas at " + date});
             var container = $('<div>', {html:name, class: "event"});
             container.append(rsvp);
             container.append(description);
