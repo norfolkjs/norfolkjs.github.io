@@ -1,7 +1,7 @@
 $.ajax({
     type: 'GET',
     dataType: 'jsonp',
-    url: 'http://api.meetup.com/2/events?status=upcoming&order=time&limited_events=False&group_urlname=Norfolkjs&desc=false&offset=0&format=json&page=200&fields=&sig_id=81917392&sig=930ab80837bf42d66ba5a2e155c3d2b9347d4227',
+    url: 'http://api.meetup.com/2/events?status=upcoming&order=time&limited_events=False&group_urlname=norfolkjs&desc=false&offset=0&format=json&page=20&fields=&sig_id=81917392&sig=f73e25d2afbe77cec29ac349a9fc5744b7a77d69',
     data: {
     }
 })
