@@ -269,3 +269,20 @@ a {
   font-weight: 300;
   color: #666;
 }
+
+/***Sponsor***/
+.sponsors {
+  background-color: #ffffff;
+  padding: 10px;
+  margin: auto;
+  text-align: center;
+}
+.h1sponsors {
+  margin: auto;
+  text-align: center;
+}
+.logo {
+  margin-right:20px;
+  height: 50px;
+  width: auto;
+}
