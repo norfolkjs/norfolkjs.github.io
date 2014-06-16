@@ -1,7 +1,7 @@
 $.ajax({
     type: 'GET',
     dataType: 'jsonp',
-    url: 'http://api.meetup.com/2/groups',
+    url: 'http://api.meetup.com/2/events',
     data: {
         key: '5f2a61211f8735c1f612b661c263a18',
         group_urlname: 'NorfolkJS',
@@ -11,10 +11,11 @@ $.ajax({
 })
     .done(
       function (json) {
-        $.each(json.results[0].sponsors, function (key,val) {
-            if (!val.hasOwnProperty("redeem")) {
-                var element = $('<a>', {href: val.url, html: $('<img>', {src: val.image_url})});
-                $(".events").append(element);
-            }
+        console.log(json);
+        $.each(json.results, function (key,val) {
+            var element = $('<a>', {href: val.event_url, html: $('<h2>', {text: val.name})});
+            var container = $('<div>',{html:element, class: "event"});
+            console.log(element);
+            $(".events").append(container);
         });
     });
