@@ -1,14 +1,12 @@
 ---
 layout: layout
-title: "Norfolk.js"
+title: "Upcoming Events"
 ---
 
-<div class="posts">
-{% for post in site.posts %}
-    <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-    <p>Posted: {{ post.date | date: '%B %d, %Y' }}</p>
-    <p>{{ post.excerpt }}</p>
-    <hr />
-    <br>
-{% endfor %}
+<script src="/javascripts/events.js"></script>
+
+<h1>Upcoming Events</h1>
+
+<div class="api_container">
+  <div class="events"></div>
 </div>
