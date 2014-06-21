@@ -29,12 +29,9 @@ li {
   line-height: 1.4 ;
 }
 
-/* Header, <header>
-   header   - container
-   h1       - project name
-   h2       - project description
+/**
+  Header, <header>
 */
-
 header {
   background: rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -69,6 +66,13 @@ header h2 {
   color: #666;
 }
 
+header a {
+  margin-right: 10px;
+}
+
+/**
+  Footer, <footer>
+*/
 footer {
   border-top: 1px dashed #e1ae45;
   text-align: center;
@@ -92,7 +96,8 @@ footer #align {
   margin: 0;
 }
 
-/* Main Content
+/**
+  Main Content
 */
 
 #main_content {
@@ -113,8 +118,15 @@ h1, h2, h3, h4, h5, h6 {
                0 0 10px rgba(181, 232, 83, 0.1);
 }
 
+/**
+  H1 Header at the top of each page
+*/
 #main_content h1 {
   font-size: 30px;
+  margin: 0 auto;
+  padding: 20px 0;
+  border-bottom: 1px dashed #e1ae45;
+  text-align: center;
 }
 
 #main_content h2 {
@@ -270,33 +282,32 @@ a {
   color: #666;
 }
 
-/***Sponsor***/
-.sponsors {
-  background-color: #ffffff;
+/*** Meetup API Pages ***/
+
+.api_container {
   padding: 10px;
   margin: auto;
   text-align: center;
 }
-.h1sponsors {
-  margin: auto;
-  text-align: center;
-}
-.logo {
-  margin-right:20px;
-  height: 50px;
-  width: auto;
+
+.api_container .events .event {
+  border-bottom: 1px dashed #e1ae45;
+  margin: 20px 0;
+  padding-bottom: 10px;
 }
 
-/***Events***/
-
-.events {
-  background-color: #000f0f;
-  padding: 10px;
-  margin: auto;
-  text-align: center;
-}
-.events a {
+.api_container .events a {
   text-decoration: none;
   border-style: solid;
   border-top-color: #000f0f;
+}
+
+.api_container .sponsors {
+  background-color: #fff;
+}
+
+.api_container .sponsors .logo {
+  margin-right: 20px;
+  height: 50px;
+  width: auto;
 }
