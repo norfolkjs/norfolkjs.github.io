@@ -11,15 +11,16 @@ $.ajax({
     /** API documentation findable here
       http://www.meetup.com/meetup_api/docs/2/events/
     **/
-    $.each(json.results, function (key,val) {
+    $.each(json.results, function (key, val) {
       var name, info, description, date, rsvp, container;
       moment.lang("en");
       date = moment(val.time).format(" h:mma on dddd, MMMM Do");
 
-      name = $('<a>', {href: val.event_url, target: "_blank", html: $('<h2>', {text: val.name})});
+      name = $.trim(val.name);
+      name = $('<a>', {href: val.event_url, target: "_blank", html: $('<h2>', {text: name})});
 
       info = $(val.description).text();
-      info = jQuery.trim(info).substring(0, 400).split(" ").slice(0, -1).join(" ") + "...";
+      info = $.trim(info).substring(0, 400).split(" ").slice(0, -1).join(" ") + "...";
 
       description = $('<p>', {text: info});
 
