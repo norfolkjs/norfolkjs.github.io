@@ -7,7 +7,11 @@ $.ajax({
 })
     .done(
       function (json) {
+        /** API documentation findable here
+          http://www.meetup.com/meetup_api/docs/2/events/
+        **/
         console.log(json);
+        //create the 'event' element and attach it the list of 'events'
         $.each(json.results, function (key,val) {
             var name = $('<a>', {href: val.event_url, html: $('<h3>', {text: val.name})});
             var info = $(val.description).text();
