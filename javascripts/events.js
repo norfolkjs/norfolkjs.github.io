@@ -12,23 +12,26 @@ $.ajax({
       http://www.meetup.com/meetup_api/docs/2/events/
     **/
     $.each(json.results, function (key, val) {
-      var name, info, description, date, rsvp, container;
+      var name, info, description, date, rsvp, container, venue;
       moment.lang("en");
       date = moment(val.time).format(" h:mma on dddd, MMMM Do");
 
       name = $.trim(val.name);
-      name = $('<a>', {href: val.event_url, target: "_blank", html: $('<h2>', {text: name})});
+      name = $('<h2>', {text: name});
 
       info = $(val.description).text();
       info = $.trim(info).substring(0, 400).split(" ").slice(0, -1).join(" ") + "...";
 
       description = $('<p>', {text: info});
 
-      rsvp = $('<p>', {text: "Join " + val.yes_rsvp_count + " ninjas at " + date});
-      name.append(rsvp);
+      rsvp = $('<a>', {text: "Join " + val.yes_rsvp_count + " ninjas at " + date, href: val.event_url, target: "_blank"});
 
-      container = $('<div>', {html:name, class: "event"});
+      venue = $('<p>', {html: "Location: " + val.venue.name});
+
+      container = $('<div>', {html: name, class: "event"});
+      container.append(rsvp);
       container.append(description);
+      container.append(venue);
       $(".events").append(container);
     });
 });

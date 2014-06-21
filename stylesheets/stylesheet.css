@@ -299,12 +299,6 @@ hr {
   padding-bottom: 10px;
 }
 
-.api_container .events a {
-  text-decoration: none;
-  border-style: solid;
-  border-top-color: #000f0f;
-}
-
 .api_container .sponsors {
   background-color: #fff;
 }
