@@ -12,7 +12,7 @@ $.ajax({
       http://www.meetup.com/meetup_api/docs/2/events/
     **/
     $.each(json.results, function (key, val) {
-      var name, info, description, date, delimit, rsvp, container, venue;
+      var name, info, description, date, limit, rsvp, container, venue;
       moment.lang("en");
       date = moment(val.time).format(" h:mma on dddd, MMMM Do");
       limit = moment().add(2,'months');
