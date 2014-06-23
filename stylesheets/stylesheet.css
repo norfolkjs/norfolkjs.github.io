@@ -306,4 +306,5 @@ hr {
 .api_container .sponsors img {
   margin: 10px;
   height: 100px;
+  max-width: 500px;
 }
