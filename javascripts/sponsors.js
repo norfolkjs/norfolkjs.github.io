@@ -8,9 +8,10 @@ $.ajax({
 .done(function (json) {
   //add class, set height, width is auto
   $.each(json.results[0].sponsors, function (key,val) {
+    var image;
     if (!val.hasOwnProperty("redeem")) {
-        var element = $('<a>', {href: val.url, html: $('<img>', {src: val.image_url, class: "logo"})});
-        $(".sponsors").append(element);
+        image = $('<a>', {href: val.url, html: $('<img>', {src: val.image_url, alt: val.name})});
+        $(".sponsors").append(image);
     }
   });
 });

@@ -303,8 +303,7 @@ hr {
   background-color: #fff;
 }
 
-.api_container .sponsors .logo {
+.api_container .sponsors img {
   margin: 10px;
   height: 100px;
-  width: auto;
 }
