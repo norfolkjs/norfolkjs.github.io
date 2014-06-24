@@ -3,7 +3,7 @@ body {
   padding: 0;
   background: #151515 url("../images/bkg.png") 0 0;
   color: #eaeaea;
-  font: 16px;
+  font-size: 16px;
   line-height: 1.5;
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
 }
@@ -31,9 +31,9 @@ h1, h2, h3, h4, h5, h6 {
 /* General & 'Reset' Stuff */
 
 .container {
-  width: 90%;
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
+  text-align: center;
 }
 
 section {
@@ -164,9 +164,14 @@ section img {
   margin: 0 0 5px 0;
 }
 
+dl {
+  text-align: left;
+}
+
 dt {
   font-style: italic;
   font-weight: bold;
+  margin-top: 10px;
 }
 
 ul li {
@@ -285,6 +290,11 @@ hr {
   color: #666;
 }
 
+.contacts {
+  width: 350px;
+  margin: 0 auto;
+}
+
 /*** Meetup API Pages ***/
 
 .api_container {
@@ -305,5 +315,5 @@ hr {
 
 .api_container .sponsors img {
   margin: 10px;
-  height: 100px;
+  max-width: 300px;
 }
