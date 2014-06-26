@@ -1,7 +1,7 @@
 $.ajax({
   type: 'GET',
   dataType: 'jsonp',
-  url: 'http://api.meetup.com/2/events?status=upcoming&order=time&limited_events=False&group_urlname=norfolkjs&desc=false&offset=0&format=json&page=20&fields=&sig_id=81917392&sig=f73e25d2afbe77cec29ac349a9fc5744b7a77d69',
+  url: 'http://api.meetup.com/2/events?status=upcoming&order=time&limited_events=False&group_urlname=norfolkjs&desc=false&offset=0&format=json&page=20&fields=&time=0%2C2m&sig_id=81917392&sig=919eaebced29b0c42b82ce3be03852353097aee9',
   data: {}
 })
 
@@ -12,12 +12,11 @@ $.ajax({
       http://www.meetup.com/meetup_api/docs/2/events/
     **/
     $.each(json.results, function (key, val) {
-      var name, info, description, date, limit, rsvp, container, venue;
+      var name, info, description, date, rsvp, container, venue;
       moment.lang("en");
       date = moment(val.time).format(" h:mma on dddd, MMMM Do");
       limit = moment().add(2,'months');
 
-      if( val.time < limit){
         name = $.trim(val.name);
         name = $('<h2>', {text: name});
 
@@ -35,6 +34,5 @@ $.ajax({
         container.append(description);
         container.append(venue);
         $(".events").append(container);
-      }
     });
 });
