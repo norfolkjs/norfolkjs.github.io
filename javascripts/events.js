@@ -15,19 +15,18 @@ $.ajax({
       var name, info, description, date, rsvp, container, venue;
       moment.lang("en");
       date = moment(val.time).format(" h:mma on dddd, MMMM Do");
-      limit = moment().add(2,'months');
-
-        name = $.trim(val.name);
+        console.log($.trim(val.name));
+        name = $.trim(val.name) !== null ? $.trim(val.name) : "Not Yet Set";
         name = $('<h2>', {text: name});
 
-        info = $(val.description).text();
+        info = $(val.description).text() !== null ? $(val.description).text() : "No Description";
         info = $.trim(info).substring(0, 400).split(" ").slice(0, -1).join(" ") + "...";
-
         description = $('<p>', {text: info});
 
         rsvp = $('<a>', {text: "Join " + val.yes_rsvp_count + " ninjas at " + date, href: val.event_url, target: "_blank"});
-
-        venue = $('<p>', {html: "Location: " + val.venue.name});
+        console.log(val.venue );
+        venue = typeof(val.venue) !== "undefined" ? val.venue.name : "To Be Announced";
+        venue = $('<p>', {html: "Location: " + venue});
 
         container = $('<div>', {html: name, class: "event"});
         container.append(rsvp);
