@@ -19,6 +19,7 @@ Troy is a software engineer at ETA. In his spare time, he likes to play with rob
 
 <br>
 Bonus Lighting Talk with Austin Hodge on modularizing your task runners.
+<br>
 [Slides: http://slides.com/austinhodge/deck#/](http://slides.com/austinhodge/deck#/)
 <br>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Xw9Hb1EWmX8" frameborder="0" allowfullscreen></iframe>
