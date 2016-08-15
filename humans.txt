@@ -5,6 +5,11 @@ Github: https://github.com/lynnaloo
 Twitter: @lynnaloo
 From: Norfolk, VA
 
+Developer: Travis Webb
+Github: https://github.com/tjwebb
+Twitter: @tjwebbongithub
+From: Norfolk, VA
+
 Developer: Brandon Flade
 Github: https://github.com/bmf
 Twitter: @_bmf_
@@ -21,3 +26,5 @@ Ninja Cat Logo Designer: Lookmai Rattana
 Github: https://github.com/cosmicmeow
 Twitter: @cosmic_meow
 From: Norfolk, VA
+
+NodeBots Norfolk Designer: Trisha Tobias
