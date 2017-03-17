@@ -23,3 +23,5 @@ Bonus Lighting Talk with Austin Hodge on modularizing your task runners.
 [Slides: http://slides.com/austinhodge/deck#/](http://slides.com/austinhodge/deck#/)
 <br>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Xw9Hb1EWmX8" frameborder="0" allowfullscreen></iframe>
+
+[Slides: http://slides.com/austinhodge/deck#/](http://slides.com/austinhodge/deck#/)
