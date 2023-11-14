@@ -28,7 +28,7 @@ After all things are installed, consult each file in the tasks directory for som
 Local build requirements: Ruby 2.7.2
 ```
 $ rvm install 2.7
-$ gem install bundler
+$ gem install bundler:1.13.7
 $ bundle install
 $ bundle exec jekyll serve 
 ```
