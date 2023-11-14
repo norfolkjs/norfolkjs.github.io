@@ -23,3 +23,13 @@ Check out the open [bugs and enhancements](https://github.com/norfolkjs/norfolkj
 
 After all things are installed, consult each file in the tasks directory for some development tips. Since we use Bundler bin stubs, make sure to have the local `.bin` folder is high in your `$PATH`. See [rbenv's for recommendations](https://github.com/sstephenson/rbenv/wiki/Understanding-binstubs#adding-project-specific-binstubs-to-path).
 
+## 2023 Update
+
+Local build requirements: Ruby 2.7.2
+```
+$ rvm install 2.7
+$ gem install bundler
+$ bundle install
+$ bundle exec jekyll serve 
+```
+Then, you can access the site locally by going to http://localhost:4000 in your web browser.
