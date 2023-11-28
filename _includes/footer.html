@@ -1,4 +1,8 @@
 <footer>
-  <h2>Norfolk.js &copy; 2019 all rights reserved.</h2>
+  <h2>Norfolk.js &copy; <span id="copyright_year">2019</span> all rights reserved.</h2>
   <h2>Brought to you by <a href="/humans.txt">proud ninjas</a>.</h2>
 </footer>
+
+<script>
+$('#copyright_year').html(new Date().getFullYear());
+</script>
