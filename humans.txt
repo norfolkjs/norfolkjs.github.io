@@ -20,6 +20,10 @@ Github: https://github.com/stanzheng
 Twitter: @StanZheng
 From: Norfolk, VA
 
+Developer: Joey Di Nardo
+Github: https://github.com/extremelylatebound
+From: Virginia Beach, VA
+
 /* THANKS */
 
 Ninja Cat Logo Designer: Lookmai Rattana
