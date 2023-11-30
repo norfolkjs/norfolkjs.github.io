@@ -1,0 +1,38 @@
+{
+    "name": "norfolkjs.github.io",
+    "version": "1.0.0",
+    "description": "Norfolk.js Website ===================",
+    "main": "index.js",
+    "engines": {
+        "npm": ">=8.0.00",
+        "node": ">=18.0.0"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "env $(cat .env | grep -v \"#\" | xargs) nodemon ./src/dev.js -e js,html,md",
+        "start": "env $(cat .env | grep -v \"#\" | xargs) npx http-server build",
+        "prestart": "npm run build",
+        "build": "env $(cat .env | grep -v \"#\" | xargs) node ./src/build.js",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/iambriansreed/norfolkjs.github.io.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/iambriansreed/norfolkjs.github.io/issues"
+    },
+    "homepage": "https://github.com/iambriansreed/norfolkjs.github.io#readme",
+    "devDependencies": {
+        "eslint": "^8.54.0",
+        "gh-pages": "^6.0.0",
+        "handlebars": "^4.7.8",
+        "marked": "^10.0.0",
+        "nodemon": "^3.0.1",
+        "utils": "file:./src/utils"
+    },
+    "dependencies": {}
+}

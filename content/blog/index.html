@@ -1,0 +1,15 @@
+---
+title: Norfolk.js
+---
+
+<h1>Blog</h1>
+
+<div class="posts">
+    {{#each posts }}
+    <h3><a href="{{ this.url }}">{{ this.title }}</a></h3>
+    <p>Posted: {{ this.dateFormatted }}</p>
+    <p>{{ this.excerpt }}</p>
+    <hr />
+    <br />
+    {{/each}}
+</div>
