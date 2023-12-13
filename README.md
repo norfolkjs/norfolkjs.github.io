@@ -1,3 +1,5 @@
+[![Build & Deploy](https://github.com/iambriansreed/norfolkjs.github.io/actions/workflows/build-deploy.yml/badge.svg)](https://github.com/iambriansreed/norfolkjs.github.io/actions/workflows/build-deploy.yml)
+
 # Norfolk.js Website
 
 This repository contains the source code for Norfolk.js's user group website. We strongly encourage everyone
