@@ -1,15 +1,19 @@
-const fs = require('fs');
-const path = require('path');
-const marked = require('marked');
+import { readFileSync } from 'node:fs';
+import { join, parse, dirname } from 'node:path';
+import * as marked from 'marked';
 
-const { parseMeta } = require('utils');
+import { fileURLToPath } from 'node:url';
 
-const blogDir = path.join(__dirname);
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
-module.exports = ({ urlPath }) => {
-    const fileName = path.parse(urlPath).name + '.md';
+import { parseMeta } from '#utils';
 
-    const contentWithMeta = fs.readFileSync(path.join(blogDir, fileName), 'utf-8');
+const blogDir = join(__dirname);
+
+export default ({ urlPath }) => {
+    const fileName = parse(urlPath).name + '.md';
+
+    const contentWithMeta = readFileSync(join(blogDir, fileName), 'utf-8');
 
     const { meta, content: markdown } = parseMeta(contentWithMeta);
 

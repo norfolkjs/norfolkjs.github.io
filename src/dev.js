@@ -1,9 +1,11 @@
-const fs = require('fs');
-const http = require('http');
-const path = require('path');
-const url = require('url');
+import fs from 'node:fs';
+import http from 'node:http';
+import path from 'node:path';
+import url from 'node:url';
 
-const { buildPage, getRoutes } = require('utils');
+const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+
+import { buildPage, getRoutes } from '#utils';
 
 const port = process.env.PORT;
 const host = process.env.HOST;
@@ -35,32 +37,33 @@ function getContentType(filePath) {
 
 const fileExists = (filePath) => fs.existsSync(filePath) && fs.lstatSync(filePath).isFile();
 
-function response404(response, pathname) {
+async function response404(response, pathname) {
     let chunk = '404 - not found';
 
-    if (routes['/404']) chunk = buildPage(routes['/404'], pathname);
+    if (routes['/404']) chunk = await buildPage(routes['/404'], pathname);
 
     response.writeHead(404, { 'Content-Type': 'text/html' });
     response.end(chunk);
 }
 
 // Create a server
-http.createServer((request, response) => {
+http.createServer(async (request, response) => {
     const { pathname: urlPath } = url.parse(request.url, true);
 
     let staticFilePath = path.join(baseDir, 'static', urlPath);
 
     // static file exists for url
     if (fileExists(staticFilePath)) {
-        fs.readFile(staticFilePath, (err, data) => {
-            if (!err) {
-                response.writeHead(200, { 'Content-Type': getContentType(staticFilePath) });
-                response.end(data);
-                return;
-            }
+        try {
+            const data = fs.readFileSync(staticFilePath);
+            response.writeHead(200, { 'Content-Type': getContentType(staticFilePath) });
+            response.end(data);
+            return;
+        } catch (err) {
             console.error(err);
-            response404(response, urlPath);
-        });
+            await response404(response, urlPath);
+        }
+
         // we are asynchronously getting the file stop the listener
         return;
     }
@@ -70,11 +73,11 @@ http.createServer((request, response) => {
     // page route exists for url
     if (routeFilePath) {
         response.writeHead(200, { 'Content-Type': 'text/html' });
-        response.end(buildPage(routeFilePath, urlPath));
+        response.end(await buildPage(routeFilePath, urlPath));
         return;
     }
 
     response404(response, urlPath);
 }).listen(port, () => {
-    console.info(`\x1b[32m%s\x1b[0m`, `Server is running at https://${host}:${port}`);
+    console.info(`\x1b[32m%s\x1b[0m`, `Server is running at http://${host}:${port}`);
 });

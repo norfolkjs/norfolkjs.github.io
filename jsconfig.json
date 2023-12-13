@@ -1,6 +1,9 @@
 {
     "compilerOptions": {
-        "baseUrl": "./"
+        "baseUrl": ".",
+        "paths": {
+            "#utils": ["./src/utils/index.js"]
+        }
     },
     "exclude": ["node_modules", "build"]
 }

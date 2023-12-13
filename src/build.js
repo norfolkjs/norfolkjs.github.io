@@ -1,68 +1,82 @@
-const fs = require('fs');
-const path = require('path');
-
-const baseDir = path.join(__dirname, '../');
-
-const { buildPage, getRoutes } = require('utils');
+import {
+    existsSync,
+    readdirSync,
+    lstatSync,
+    unlinkSync,
+    rmdirSync,
+    statSync,
+    mkdirSync,
+    copyFileSync,
+    writeFileSync,
+} from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { buildPage, getRoutes } from '#utils';
 
 const buildFolder = 'build';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const baseDir = join(__dirname, '../');
+
+const buildToPath = join(baseDir, buildFolder);
+
 const deleteFolderRecursive = function (directoryPath) {
-    if (fs.existsSync(directoryPath)) {
-        fs.readdirSync(directoryPath).forEach((file) => {
-            const curPath = path.join(directoryPath, file);
-            if (fs.lstatSync(curPath).isDirectory()) {
+    if (existsSync(directoryPath)) {
+        readdirSync(directoryPath).forEach((file) => {
+            const curPath = join(directoryPath, file);
+            if (lstatSync(curPath).isDirectory()) {
                 deleteFolderRecursive(curPath);
             } else {
-                fs.unlinkSync(curPath);
+                unlinkSync(curPath);
             }
         });
-        fs.rmdirSync(directoryPath);
+        rmdirSync(directoryPath);
     }
 };
 
 const copyRecursiveSync = function (src, dest) {
-    var exists = fs.existsSync(src);
-    var stats = exists && fs.statSync(src);
+    var exists = existsSync(src);
+    var stats = exists && statSync(src);
     var isDirectory = exists && stats.isDirectory();
     if (isDirectory) {
-        if (!fs.existsSync(dest)) fs.mkdirSync(dest);
-        fs.readdirSync(src).forEach((childItemName) => {
-            copyRecursiveSync(path.join(src, childItemName), path.join(dest, childItemName));
+        if (!existsSync(dest)) mkdirSync(dest);
+        readdirSync(src).forEach((childItemName) => {
+            copyRecursiveSync(join(src, childItemName), join(dest, childItemName));
         });
     } else {
-        fs.copyFileSync(src, dest);
+        copyFileSync(src, dest);
     }
 };
 
-const buildToPath = path.join(baseDir, buildFolder);
+export default async () => {
+    // 1. delete existing build folder
 
-// 1. delete existing build folder
+    if (existsSync(buildToPath)) {
+        deleteFolderRecursive(buildToPath);
+    }
 
-if (fs.existsSync(buildToPath)) {
-    deleteFolderRecursive(buildToPath);
-}
+    // 2. create the build folder
 
-// 2. create the build folder
+    mkdirSync(buildToPath);
 
-fs.mkdirSync(buildToPath);
+    // 3. copy static files to copy
 
-// 3. copy static files to copy
+    copyRecursiveSync(join(baseDir, 'static'), buildToPath);
 
-copyRecursiveSync(path.join(baseDir, 'static'), buildToPath);
+    // 4. make pages and write to build folder
 
-// 4. make pages and write to build folder
+    const routes = getRoutes();
 
-const routes = getRoutes();
+    for (const [route, filePath] of Object.entries(routes)) {
+        const pageContent = await buildPage(filePath, route);
 
-for (const [route, filePath] of Object.entries(routes)) {
-    const pageContent = buildPage(filePath, route);
+        const pageDirPath = join(buildToPath, route);
 
-    const pageDirPath = path.join(buildToPath, route);
+        if (!existsSync(pageDirPath)) mkdirSync(pageDirPath, { recursive: true });
 
-    if (!fs.existsSync(pageDirPath)) fs.mkdirSync(pageDirPath, { recursive: true });
+        const pageBuildPath = join(buildToPath, route, 'index.html');
 
-    const pageBuildPath = path.join(buildToPath, route, 'index.html');
-
-    fs.writeFileSync(pageBuildPath, pageContent);
-}
+        writeFileSync(pageBuildPath, pageContent);
+    }
+};

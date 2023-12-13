@@ -1,17 +1,20 @@
-const fs = require('fs');
-const path = require('path');
-const marked = require('marked');
+import fs from 'node:fs';
+import path from 'node:path';
+import * as marked from 'marked';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const templatesDir = path.join(__dirname, '../../templates');
 const contentDir = path.join(__dirname, '../../content');
 
-const handlebars = require('handlebars');
+import handlebars from 'handlebars';
 
 const defaultTemplate = handlebars.compile(fs.readFileSync(path.join(templatesDir, 'default.html'), 'utf-8'));
 
 const isContent = (file) => file.match(/\.(html|md|txt)$/g);
 
-function buildPage(filePath, urlPath) {
+export async function buildPage(filePath, urlPath) {
     if (typeof filePath !== 'string') return null;
 
     let pageContentWithMeta = fs.readFileSync(filePath, 'utf-8');
@@ -41,7 +44,8 @@ function buildPage(filePath, urlPath) {
         let data = {};
         if (dataFilePath) {
             try {
-                data = require(dataFilePath)({ urlPath });
+                const { default: dataCallback } = await import(dataFilePath);
+                data = dataCallback({ urlPath });
             } catch (error) {
                 console.error(error);
             }
@@ -70,7 +74,7 @@ function buildPage(filePath, urlPath) {
     }
 }
 
-function parseMeta(content) {
+export function parseMeta(content) {
     const metaMatch = content.match(RegExp('---.*?---', 's'));
 
     const meta = {};
@@ -125,12 +129,6 @@ function routesFromDir(dir) {
  * @param {string} dir
  * @returns {{'/': 'contents/index.html'}}
  */
-function getRoutes() {
+export function getRoutes() {
     return routesFromDir(contentDir) || [];
 }
-
-module.exports = {
-    buildPage,
-    getRoutes,
-    parseMeta,
-};
