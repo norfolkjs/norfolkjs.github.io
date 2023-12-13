@@ -17,7 +17,7 @@ Check out the open [bugs and enhancements](https://github.com/norfolkjs/norfolkj
 -   Clone your fork. [How?](https://help.github.com/articles/fork-a-repo#step-2-clone-your-fork)
 -   Start coding.
 -   Push your code to your fork. [How?](https://help.github.com/articles/fork-a-repo#push-commits)
--   Add your name to the [humans.txt](https://github.com/norfolkjs/norfolkjs.github.io/blob/master/humans.txt).
+-   Add your name to the [people.txt](/content/about/people.txt).
 -   Issue a pull request to [norfolkjs.github.io](https://github.com/norfolkjs/norfolkjs.github.io/pulls). [How?](https://help.github.com/articles/using-pull-requests)
 
 ### Local development setup
