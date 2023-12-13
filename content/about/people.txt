@@ -24,6 +24,11 @@ Developer: Joey Di Nardo
 Github: https://github.com/extremelylatebound
 From: Virginia Beach, VA
 
+Developer: Brian S. Reed
+Github: https://github.com/iambriansreed
+Website: https://iambrian.com
+From: Virginia Beach, VA
+
 /* THANKS */
 
 Ninja Cat Logo Designer: Lookmai Rattana
