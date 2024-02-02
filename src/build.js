@@ -1,17 +1,8 @@
-import {
-    existsSync,
-    readdirSync,
-    lstatSync,
-    unlinkSync,
-    rmdirSync,
-    statSync,
-    mkdirSync,
-    copyFileSync,
-    writeFileSync,
-} from 'node:fs';
+import { mkdirSync, existsSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildPage, getRoutes } from '#utils';
+import { parsePageContent, copyRecursiveSync, buildHtml } from '#utils';
+import './init';
 
 const buildFolder = 'build';
 
@@ -19,62 +10,36 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const baseDir = join(__dirname, '../');
 
-const buildToPath = join(baseDir, buildFolder);
-
-const deleteFolderRecursive = function (directoryPath) {
-    if (existsSync(directoryPath)) {
-        readdirSync(directoryPath).forEach((file) => {
-            const curPath = join(directoryPath, file);
-            if (lstatSync(curPath).isDirectory()) {
-                deleteFolderRecursive(curPath);
-            } else {
-                unlinkSync(curPath);
-            }
-        });
-        rmdirSync(directoryPath);
-    }
-};
-
-const copyRecursiveSync = function (src, dest) {
-    var exists = existsSync(src);
-    var stats = exists && statSync(src);
-    var isDirectory = exists && stats.isDirectory();
-    if (isDirectory) {
-        if (!existsSync(dest)) mkdirSync(dest);
-        readdirSync(src).forEach((childItemName) => {
-            copyRecursiveSync(join(src, childItemName), join(dest, childItemName));
-        });
-    } else {
-        copyFileSync(src, dest);
-    }
-};
+const buildPath = join(baseDir, buildFolder);
 
 // 1. delete existing build folder
 
-if (existsSync(buildToPath)) {
-    deleteFolderRecursive(buildToPath);
-}
+// done in bash command
 
 // 2. create the build folder
 
-mkdirSync(buildToPath);
+mkdirSync(buildPath);
+// todo: do this in a bash command
 
 // 3. copy static files to copy
 
-copyRecursiveSync(join(baseDir, 'static'), buildToPath);
+copyRecursiveSync(join(baseDir, 'static'), buildPath);
+// todo: do this in a bash command
 
 // 4. make pages and write to build folder
 
-const routes = getRoutes();
+const routePages = parsePageContent();
 
-for (const [route, filePath] of Object.entries(routes)) {
-    const pageContent = await buildPage(filePath, route);
+for (const [route, page] of Object.entries(routePages)) {
+    const pageContent = buildHtml(page, routePages);
 
-    const pageDirPath = join(buildToPath, route);
+    const pageDirPath = join(buildPath, route);
 
+    // create the directory if it doesn't exist
     if (!existsSync(pageDirPath)) mkdirSync(pageDirPath, { recursive: true });
 
-    const pageBuildPath = join(buildToPath, route, 'index.html');
-
-    writeFileSync(pageBuildPath, pageContent);
+    // write the page to the correct build folder
+    writeFileSync(join(buildPath, route, 'index.html'), pageContent);
 }
+
+writeFileSync(join(buildPath, 'build-' + new Date().toISOString()), 'build complete!');

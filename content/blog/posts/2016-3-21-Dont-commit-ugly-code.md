@@ -2,7 +2,7 @@
 template: post
 title: Don't Commit Your Ugly Code
 tags: javascript, meetup, norfolk, ESLint, gulp
-published: true
+posted: date: March 21, 2016
 excerpt: Cleaning up your code with Troy Connor
 ---
 

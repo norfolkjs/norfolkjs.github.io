@@ -41,43 +41,52 @@ Then, you can access the site locally by going to https://localhost:4000 in your
 
 `npm run build`
 
-Generates all the [`/content``](#content) files as static files.
-Copies all the static files to the build folder.
+Builds a static copy of the site in the build directory.
 
-| Content File Path               | URL Path                      |
-| ------------------------------- | ----------------------------- |
-| `index.html`                    | `/`                           |
-| `blog/index.html`               | `/blog`                       |
-| `blog/2023-12-25-post-title.md` | `/blog/2023-12-25-post-title` |
-| `about/index.html`              | `/about`                      |
-| `about/people.txt`              | `/about/people`               |
-
-#### Deploy the build folder and contents to the gh-pages branch and push updates
+#### Deploy the build folder and contents to the `gh-pages` branch and push updates
 
 `npm run deploy`
 
 TODO: Run this in a github action when a PR is merged.
 
-## File structure
+## Project structure
 
 The repo has four folders:
 
--   [/content](#content)
 -   [/static](#static)
 -   [/templates](#templates)
 -   [/src](#src)
+-   [/content](#content)
 
 ### /static
 
-Contains the client side static files. e.g. images, client side js, css, etc. The contents of this folder are included in the build of the site.
+Contains static files. e.g. images, js, css, etc. Assets in this directory will be served at root path / during dev, and copied to the root of the build directory as-is.
+
+### /templates
+
+Contains the [handlebars.js](https://handlebarsjs.com/guide/#what-is-handlebars) templates.
+
+### /src
+
+Contains the server side javascript that builds the website and runs the site in dev mode.
 
 ### /content
 
-Contains the html, [handlebars.js](https://handlebarsjs.com/guide/#what-is-handlebars) templates, markdown, or txt files with the content of the site.
+Contains the files for which pages are built from. The directory structure in this folder directly results in the site structure. Can include the html, [handlebars.js](https://handlebarsjs.com/guide/#what-is-handlebars) templates, markdown, or txt files.
 
-#### Meta
+For example:
 
-Content files may also contain a meta header. The `title` property sets the document title. If the `template` prop isn't set the default [template](#templates) is used. All the values in the header can be used in the handlebars templates.
+| Content File Path    | Browser URL Path   | Static File Path Builds       |
+| -------------------- | ------------------ | ----------------------------- |
+| `index.html`         | `/`                | `/index.html`                 |
+| `blog/index.html`    | `/blog`            | `/blog/index.html`            |
+| `blog/post-title.md` | `/blog/post-title` | `/blog/post-title/index.html` |
+| `about/index.html`   | `/about`           | `/about/index.html`           |
+| `about/people.txt`   | `/about/people`    | `/about/people/index.html`    |
+
+#### Meta Header
+
+Content files may optionally contain a meta header. Started with [jekyllrb](https://jekyllrb.com/docs/front-matter/) with some customizations.
 
 ```
 ---
@@ -89,12 +98,4 @@ excerpt: The kickoff meetup for the Norfolk.js group.
 ---
 ```
 
-### /templates
-
-Contains the [handlebars.js](https://handlebarsjs.com/guide/#what-is-handlebars) templates.
-
-### /src
-
-Contains the server side javascript that builds the website and runs the site in dev mode.
-
-###
+The only properties that the site builder uses are the `title` property and the `template` property. The `title` property sets the document title. If the `template` prop isn't set the default [template](#templates) is used. All the values in the header can be used in the handlebars templates.

@@ -1,13 +1,13 @@
 ---
-title: Norfolk.js
+posts: metaFrom /blog/posts sortBy posted asc
 ---
 
 <h1>Blog</h1>
 
 <div class="posts">
     {{#each posts }}
-    <h3><a href="{{ this.url }}">{{ this.title }}</a></h3>
-    <p>Posted: {{ this.dateFormatted }}</p>
+    <h3><a href="{{ this.route }}">{{ this.title }}</a></h3>
+    <p>Posted: {{{dateFormat "LL" this.posted}}}</p>
     <p>{{ this.excerpt }}</p>
     <hr />
     <br />

@@ -9,10 +9,12 @@
         "node": ">=18.0.0"
     },
     "scripts": {
-        "dev": "env $(cat .env | grep -v \"#\" | xargs) nodemon ./src/dev.js -e js,html,md",
-        "start": "env $(cat .env | grep -v \"#\" | xargs) npx http-server build",
+        "set-env": "env $(cat .env | grep -v \"#\" | xargs)",
+        "dev": "npm run set-env nodemon ./src/dev.js -e js,html,md",
+        "start": "npm run set-env npx http-server build -o",
         "prestart": "npm run build",
-        "build": "env $(cat .env | grep -v \"#\" | xargs) node ./src/build.js --input-type=module",
+        "prebuild": "rm -rf build",
+        "build": "npm run set-env node ./src/build.js --input-type=module",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build"
     },
@@ -35,5 +37,8 @@
     },
     "imports": {
         "#utils": "./src/utils/index.js"
+    },
+    "dependencies": {
+        "moment": "^2.30.1"
     }
 }
