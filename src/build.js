@@ -1,32 +1,13 @@
 import { mkdirSync, existsSync, writeFileSync } from 'node:fs';
-import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { parsePageContent, copyRecursiveSync, buildHtml } from '#utils';
-import './init';
+import { join } from 'node:path';
+import './init.js';
+
+import parsePageContent from './utils/parsePageContent.js';
+import buildHtml from './utils/buildHtml.js';
 
 const buildFolder = 'build';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-const baseDir = join(__dirname, '../');
-
-const buildPath = join(baseDir, buildFolder);
-
-// 1. delete existing build folder
-
-// done in bash command
-
-// 2. create the build folder
-
-mkdirSync(buildPath);
-// todo: do this in a bash command
-
-// 3. copy static files to copy
-
-copyRecursiveSync(join(baseDir, 'static'), buildPath);
-// todo: do this in a bash command
-
-// 4. make pages and write to build folder
+const buildPath = join(process.cwd(), buildFolder);
 
 const routePages = parsePageContent();
 

@@ -2,7 +2,7 @@
 template: post
 title: Sharpen Your Saw Follow-up
 tags: javascript, meetup, norfolk, shackbarth,
-posted: date: February 18, 2014
+posted: typeDate February 18, 2014
 excerpt: Steve Hackbarth presented Sharpen your Saw, discussing problem-solving using JavaScript and other useful utilities. Participants were encouraged to bring laptops to participate in code exercises.
 ---
 

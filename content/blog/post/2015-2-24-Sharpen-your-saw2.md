@@ -2,7 +2,7 @@
 template: post
 title: Sharpen Your Saw Async
 tags: javascript, meetup, norfolk, shackbarth,
-posted: date: February 24, 2015
+posted: typeDate February 24, 2015
 excerpt: Hacking Async with Steve Hackbarth
 ---
 

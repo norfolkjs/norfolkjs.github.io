@@ -1,10 +1,7 @@
 {
     "compilerOptions": {
         "module": "CommonJS",
-        "baseUrl": ".",
-        "paths": {
-            "#utils": ["./src/utils/index.js"]
-        }
+        "baseUrl": "."
     },
     "exclude": ["node_modules", "build"]
 }

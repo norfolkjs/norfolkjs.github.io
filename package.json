@@ -13,7 +13,7 @@
         "dev": "npm run set-env nodemon ./src/dev.js -e js,html,md",
         "start": "npm run set-env npx http-server build -o",
         "prestart": "npm run build",
-        "prebuild": "rm -rf build",
+        "prebuild": "rm -rf build && mkdir build && cp -R static/. build/",
         "build": "npm run set-env node ./src/build.js --input-type=module",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build"
@@ -34,9 +34,6 @@
         "handlebars": "^4.7.8",
         "marked": "^10.0.0",
         "nodemon": "^3.0.1"
-    },
-    "imports": {
-        "#utils": "./src/utils/index.js"
     },
     "dependencies": {
         "moment": "^2.30.1"

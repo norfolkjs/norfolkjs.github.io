@@ -2,7 +2,7 @@
 template: post
 title: Unofficial US (east) mirror for Npm
 tags: javascript, npm, norfolk, mirror
-posted: date: April 21, 2014
+posted: typeDate April 21, 2014
 excerpt: This is an unofficial, but pretty good US (east) mirror for npm; this service is sponsored and maintained by norfolkjs.org.
 ---
 

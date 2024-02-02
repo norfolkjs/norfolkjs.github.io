@@ -2,15 +2,14 @@ import fs from 'node:fs';
 import http from 'node:http';
 import path from 'node:path';
 import url from 'node:url';
-import { parsePageContent, buildHtml } from '#utils';
-import './init.js';
 
-const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+import './init.js';
+import buildHtml from './utils/buildHtml.js';
+import parsePageContent from './utils/parsePageContent.js';
+import { baseDir } from './utils/dirs.js';
 
 const port = process.env.PORT;
 const host = process.env.HOST;
-
-const baseDir = path.join(__dirname, '../');
 
 function getContentType(filePath) {
     const ext = path.parse(filePath).ext.substr(1);
