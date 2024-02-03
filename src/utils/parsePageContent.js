@@ -8,36 +8,39 @@ import { contentDir } from './dirs.js';
 const isContent = (file) => file.match(/\.(html|md|txt)$/g);
 
 /**
+ * @typedef {import('src/utils/page.js').Page} Page
+ */
+
+/**
  * parseContentRecursive
  * @param {string} dir
- * @returns {Object.<string, Page>}
+ * @returns {Record<string, Page>}
  */
 function parseContentRecursive(dir) {
     const allFiles = readdirSync(dir) || [];
 
-    let routes = {};
+    let pageRoutes = {};
 
     for (const file of allFiles) {
         const filePath = path.join(dir, file);
 
         if (statSync(filePath).isDirectory()) {
-            routes = { ...routes, ...parseContentRecursive(filePath) };
+            pageRoutes = { ...pageRoutes, ...parseContentRecursive(filePath) };
         }
 
         // file is not a content file skip it
         if (!isContent(file)) continue;
+        const page = Page(filePath.replace(contentDir, ''));
 
-        const page = new Page(filePath.replace(contentDir, ''));
-
-        routes[page.route] = page;
+        pageRoutes[page.route] = page;
     }
 
-    return routes;
+    return pageRoutes;
 }
 
 /**
  * Parses the content directory and returns the parsed content.
- * @returns {Object.<string, Page>}
+ * @returns {Record<string, Page>}
  */
 export default function parsePageContent() {
     if (!existsSync(path.join(contentDir, 'index.html'))) {
@@ -45,7 +48,7 @@ export default function parsePageContent() {
     }
 
     return {
-        '/': new Page('index.html'),
+        '/': Page('index.html'),
         ...parseContentRecursive(contentDir),
     };
 }

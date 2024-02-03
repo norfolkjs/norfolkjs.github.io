@@ -1,23 +1,18 @@
-import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import * as marked from 'marked';
 
 import { contentDir } from './dirs.js';
 import buildError from './buildError.js';
-import metaTypeDate from './metaTypeDate.js';
-
-const metaTypes = Object.entries({
-    typeDate: metaTypeDate,
-});
+import fileRead, { fileExists } from './fileRead.js';
 
 /**
  * parseMeta
  * @param {RegExpMatchArray} metaMatch
  * @param {string} relativePath
- * @returns {Map}
+ * @returns {Record<string, any>}
  */
 function parseMeta(metaMatch, relativePath) {
-    const meta = new Map();
+    const meta = {};
 
     if (metaMatch) {
         for (const line of metaMatch[0].split('\n')) {
@@ -29,12 +24,7 @@ function parseMeta(metaMatch, relativePath) {
 
             const [key, value] = line.split(/:(.*)/s, 2).map((k) => k.trim());
 
-            meta.set(key, value);
-            metaTypes.forEach(([prefix, callback]) => {
-                if (value.startsWith(prefix + ' ')) {
-                    meta.set(key, callback(value));
-                }
-            });
+            meta[key] = value;
         }
     }
 
@@ -58,49 +48,76 @@ function getUrlRoute(relativePath) {
     );
 }
 /**
+ * @typedef {{
+ * route: string,
+ * content: string,
+ * title: string,
+ * meta: Record<string, any>,
+ * expressionGenerator: string | null
+ * template: string | null
+ * }} Page
+ */
+
+/**
  * Page
  * @param {string} relativePath
+ * @returns {Page}
  */
-export default class Page {
-    route = ''; // url path
-    content = '';
-    title = '';
-    meta = new Map();
+export default function page(relativePath) {
+    const details = {
+        route: '', // url path
+        content: '',
+        title: '',
+        meta: {},
+        expressionGenerator: null,
+        template: null,
+    };
 
-    constructor(relativePath) {
-        this.relativePath = relativePath;
+    if (!relativePath) return;
 
-        // build the url route from the file path
-        this.route = getUrlRoute(relativePath);
+    details.relativePath = relativePath;
 
-        // get the raw content
-        const pageFileContent = readFileSync(path.join(contentDir, relativePath), 'utf-8');
+    // build the url route from the file path
+    details.route = getUrlRoute(relativePath);
 
-        // get the meta data via regex Match
-        const metaMatch = pageFileContent.match(RegExp('---.*?---', 's'));
+    // get the raw content
+    const pagePath = path.join(contentDir, relativePath);
+    const pageFileContents = fileRead(pagePath);
 
-        let content = '';
-
-        let meta = new Map();
-
-        if (metaMatch) {
-            // remove meta from content
-            content = pageFileContent.replace(metaMatch[0], '').trim();
-            // set the parsed the meta data
-            meta = parseMeta(metaMatch, relativePath);
-        } else {
-            content = pageFileContent;
-        }
-
-        if (relativePath.endsWith('.md')) {
-            content = marked.parse(content.replace(/<br>/g, '<br>\n'));
-        }
-
-        if (relativePath.endsWith('.txt')) {
-            content = content.replace(/\n/g, '<br>\n');
-        }
-
-        this.content = content;
-        this.meta = meta;
+    const expressionGeneratorPath = pagePath.substring(0, pagePath.lastIndexOf('.')) + '.js';
+    if (fileExists(expressionGeneratorPath)) {
+        // we will run this when we build the page
+        details.expressionGenerator = expressionGeneratorPath;
     }
+
+    // get the meta data via regex Match
+    const metaMatch = pageFileContents.match(RegExp('---.*?---', 's'));
+
+    let meta = {};
+    let content = '';
+
+    if (metaMatch) {
+        // remove meta from content
+        content = pageFileContents.replace(metaMatch[0], '').trim();
+        // set the parsed the meta data
+        meta = parseMeta(metaMatch, relativePath);
+    } else {
+        content = pageFileContents;
+    }
+
+    meta.route = details.route;
+
+    if (relativePath.endsWith('.md')) {
+        content = marked.parse(content.replace(/<br>/g, '<br>\n'));
+    }
+
+    if (relativePath.endsWith('.txt')) {
+        content = content.replace(/\n/g, '<br>\n');
+    }
+
+    if (meta.template) details.template = meta.template;
+    details.content = content;
+    details.meta = meta;
+
+    return details;
 }

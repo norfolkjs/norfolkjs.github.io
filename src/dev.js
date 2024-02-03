@@ -1,9 +1,9 @@
-import fs from 'node:fs';
 import http from 'node:http';
 import path from 'node:path';
 import url from 'node:url';
 
 import './init.js';
+import fileRead from './utils/fileRead.js';
 import buildHtml from './utils/buildHtml.js';
 import parsePageContent from './utils/parsePageContent.js';
 import { baseDir } from './utils/dirs.js';
@@ -12,7 +12,7 @@ const port = process.env.PORT;
 const host = process.env.HOST;
 
 function getContentType(filePath) {
-    const ext = path.parse(filePath).ext.substr(1);
+    const ext = path.parse(filePath).ext.substring(1);
 
     const contentType =
         {
@@ -32,50 +32,78 @@ function getContentType(filePath) {
     return contentType;
 }
 
-const fileExists = (filePath) => fs.existsSync(filePath) && fs.lstatSync(filePath).isFile();
+let lastReload = '';
 
-function response404(response, page404) {
-    let chunk = page404 ? buildHtml(page404) : '404 - not found';
+const res404 = async () => ({
+    chunk: await buildHtml({ meta: null, content: '404 - not found :(' }),
+    statusCode: 404,
+    headers: { 'Content-Type': 'text/html' },
+});
 
-    response.writeHead(404, { 'Content-Type': 'text/html' });
-    response.end(chunk);
-}
+const res500 = (error) => ({
+    chunk: fileRead(path.join(baseDir, 'src/500.html')).replace('<!-- message -->', error.errorMessage),
+    statusCode: 500,
+    headers: { 'Content-Type': 'text/html' },
+});
 
-(() => {
+(async () => {
+    lastReload = new Date().toISOString();
+
     // Create a server
     http.createServer(async (request, response) => {
-        const routePages = parsePageContent();
-
         const { pathname: urlPath } = url.parse(request.url, true);
 
-        let staticFilePath = path.join(baseDir, 'static', urlPath);
+        if (urlPath === '/dev/reload') {
+            response.writeHead(200, { 'Content-Type': 'application/json' });
+            response.end(JSON.stringify({ lastReload }));
+            return;
+        }
 
-        // static file exists for url
-        if (fileExists(staticFilePath)) {
+        const res = await (async () => {
             try {
-                const data = fs.readFileSync(staticFilePath);
-                response.writeHead(200, { 'Content-Type': getContentType(staticFilePath) });
-                response.end(data);
-                return;
-            } catch (err) {
-                console.error(err);
-                response404(response, routePages['/404']);
+                const staticFilePath = path.join(baseDir, 'static', urlPath);
+                const staticChunk = fileRead(staticFilePath, {});
+
+                if (staticChunk) {
+                    return {
+                        chunk: staticChunk,
+                        statusCode: 200,
+                        headers: { 'Content-Type': getContentType(staticFilePath) },
+                        isStatic: true,
+                    };
+                }
+
+                let routePages = {};
+
+                routePages = parsePageContent();
+
+                const page = routePages[urlPath];
+
+                // page route exists for url build it on the fly
+                if (page) {
+                    return {
+                        chunk: await buildHtml(page, routePages),
+                        statusCode: 200,
+                        headers: { 'Content-Type': 'text/html' },
+                    };
+                }
+
+                return res404();
+            } catch (error) {
+                console.error(error);
+                return res500(new Error(error));
             }
+        })();
 
-            // we are asynchronously getting the file stop the listener
-            return;
-        }
+        const { chunk, statusCode, headers, isStatic } = res;
 
-        const page = routePages[urlPath];
+        response.writeHead(statusCode, headers);
 
-        // page route exists for url build it on the fly
-        if (page) {
-            response.writeHead(200, { 'Content-Type': 'text/html' });
-            response.end(buildHtml(page, routePages));
-            return;
-        }
+        const chunkUpdated = !isStatic
+            ? chunk.replace('</body>', `<script src="/javascripts/dev.js"></script></body>`)
+            : chunk;
 
-        response404(response, routePages['/404']);
+        response.end(chunkUpdated);
     }).listen(port, () => {
         console.info(`\x1b[32m%s\x1b[0m`, `Server is running at http://${host}:${port}`);
     });

@@ -11,16 +11,18 @@ const buildPath = join(process.cwd(), buildFolder);
 
 const routePages = parsePageContent();
 
-for (const [route, page] of Object.entries(routePages)) {
-    const pageContent = buildHtml(page, routePages);
+(async () => {
+    for (const [route, page] of Object.entries(routePages)) {
+        const pageContent = await buildHtml(page, routePages);
 
-    const pageDirPath = join(buildPath, route);
+        const pageDirPath = join(buildPath, route);
 
-    // create the directory if it doesn't exist
-    if (!existsSync(pageDirPath)) mkdirSync(pageDirPath, { recursive: true });
+        // create the directory if it doesn't exist
+        if (!existsSync(pageDirPath)) mkdirSync(pageDirPath, { recursive: true });
 
-    // write the page to the correct build folder
-    writeFileSync(join(buildPath, route, 'index.html'), pageContent);
-}
+        // write the page to the correct build folder
+        writeFileSync(join(buildPath, route, 'index.html'), pageContent);
+    }
 
-writeFileSync(join(buildPath, 'build-' + new Date().toISOString()), 'build complete!');
+    writeFileSync(join(buildPath, 'build-' + new Date().toISOString()), 'build complete!');
+})();

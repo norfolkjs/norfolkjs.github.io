@@ -1,5 +1,5 @@
 ---
-posts: metaFrom /blog/post sortBy posted desc
+title: Blog
 ---
 
 <h1>Blog</h1>
@@ -7,7 +7,7 @@ posts: metaFrom /blog/post sortBy posted desc
 <div class="posts">
     {{#each posts }}
     <h3><a href="{{ this.route }}">{{ this.title }}</a></h3>
-    <p>Posted: {{{dateFormat "LL" this.posted}}}</p>
+    <p>Posted: {{{dateFormat "MM-DD-YYYY" this.posted}}}</p>
     <p>{{ this.excerpt }}</p>
     <hr />
     <br />

@@ -9,12 +9,11 @@
         "node": ">=18.0.0"
     },
     "scripts": {
-        "set-env": "env $(cat .env | grep -v \"#\" | xargs)",
-        "dev": "npm run set-env nodemon ./src/dev.js -e js,html,md",
-        "start": "npm run set-env npx http-server build -o",
+        "dev": "nodemon -r dotenv/config --watch \"*\" -e \"*\" src/dev.js",
+        "start": "npx http-server build -o",
         "prestart": "npm run build",
         "prebuild": "rm -rf build && mkdir build && cp -R static/. build/",
-        "build": "npm run set-env node ./src/build.js --input-type=module",
+        "build": "node ./src/build.js --input-type=module",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build"
     },
@@ -36,6 +35,7 @@
         "nodemon": "^3.0.1"
     },
     "dependencies": {
+        "dotenv": "^16.4.1",
         "moment": "^2.30.1"
     }
 }

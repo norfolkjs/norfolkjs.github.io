@@ -1,48 +1,51 @@
-import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import handlebars from 'handlebars';
 
 import buildError from './buildError.js';
 import { templatesDir } from './dirs.js';
-import metaFrom from './metaFrom.js';
+import fileRead from './fileRead.js';
 
-const defaultHandlebarsTemplate = handlebars.compile(
-    readFileSync(path.join(templatesDir, 'default.html'), 'utf-8')
-);
+const defaultHandlebarsTemplate = handlebars.compile(fileRead(path.join(templatesDir, 'default.html')));
+
+/**
+ * @typedef {import('src/utils/page.js').Page} Page
+ */
 
 /**
  * apply the template to the content
  * @param {Page} page
- * @param {Object.<string, Page>} routePages
- * @returns {string}
+ * @param {Record<string, Page>} routePages
+ * @returns {Promise<string>}
  */
-export default function buildHtml(page, routePages) {
-    let { template, ...meta } = Object.fromEntries(page.meta.entries());
+export default async function buildHtml(page, routePages) {
+    let { template, ...meta } = page.meta || {};
 
     let templateData = { ...meta, content: page.content };
 
-    page.meta.forEach((value, key) => {
-        if (routePages && typeof value === 'string' && value.includes('metaFrom ')) {
-            templateData[key] = metaFrom(value, routePages);
-        }
-    });
+    // if the page has an expressionGenerator, run it and add the result to the template data
+    if (page.expressionGenerator) {
+        const { default: expressionGenerator } = await import(page.expressionGenerator);
+        templateData = { ...templateData, ...expressionGenerator(routePages) };
+    }
 
-    // apply the meta data to the page content
+    // apply the meta data to the page content in case it has handlebar expressions
     templateData.content = handlebars.compile(page.content)(templateData);
 
-    // apply the template to the page content
     if (template && template !== 'default') {
+        // apply the template to the page content
         // todo: should support hbs and other template file types
         const templatePath = path.join(templatesDir, template + '.html');
 
-        if (!existsSync(templatePath)) {
+        const templateChunk = fileRead(templatePath);
+
+        if (!templateChunk) {
             return buildError(
                 `Invalid template on content page: '${page.relativePath}'. ` +
                     `Template file '${template}' does not exist.`
             );
         }
 
-        const metaTemplate = handlebars.compile(readFileSync(templatePath, 'utf-8'));
+        const metaTemplate = handlebars.compile(templateChunk);
 
         templateData.content = metaTemplate(templateData);
     }
