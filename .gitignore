@@ -1,6 +1,4 @@
-_site/
 *.old
 *.DS_Store
 node_modules
 build
-.vscode

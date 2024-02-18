@@ -53,10 +53,10 @@ TODO: Run this in a github action when a PR is merged.
 
 The repo has four folders:
 
+-   [/content](#content)
 -   [/static](#static)
 -   [/templates](#templates)
 -   [/src](#src)
--   [/content](#content)
 
 ### /static
 
