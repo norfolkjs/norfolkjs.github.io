@@ -24,7 +24,7 @@
         "url": "https://github.com/iambriansreed/norfolkjs.github.io/issues"
     },
     "homepage": "https://github.com/iambriansreed/norfolkjs.github.io#readme",
-    "devDependencies": {
-        "yelk": "file:./../yelk"
+    "dependencies": {
+        "yelk": "^1.0.2-1"
     }
 }
