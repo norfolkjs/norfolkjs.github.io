@@ -9,10 +9,10 @@
         "node": ">=18"
     },
     "scripts": {
-        "dev": "yelk -dev",
-        "start": "yelk -start",
-        "build": "yelk -build",
-        "deploy": "yelk -deploy"
+        "dev": "jakyll -dev",
+        "start": "jakyll -start",
+        "build": "jakyll -build",
+        "deploy": "jakyll -deploy"
     },
     "repository": {
         "type": "git",
@@ -25,6 +25,6 @@
     },
     "homepage": "https://github.com/iambriansreed/norfolkjs.github.io#readme",
     "dependencies": {
-        "yelk": "^1.0.2-1"
+        "jakyll": "^0.5.1"
     }
 }
