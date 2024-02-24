@@ -18,6 +18,6 @@ jobs:
             - name: Deploy to gh-pages
               uses: peaceiris/actions-gh-pages@v3
               with:
-                  github_token: ${{ secrets.PERSON_ACCESS_TOKEN_FOR_PUSH_TO_GH_PAGES_BRANCH }}
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
                   publish_dir: ./build
                   cname: ${{ vars.CNAME }}
