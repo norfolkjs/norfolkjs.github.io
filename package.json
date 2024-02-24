@@ -1,0 +1,32 @@
+{
+    "name": "norfolkjs.github.io",
+    "version": "1.0.0",
+    "description": "Website code for Norfolk.js",
+    "main": "index.js",
+    "scripts": {
+        "dev": "jakyll -dev",
+        "build": "jakyll -build",
+        "start": "jakyll -start",
+        "deploy": "jakyll -deploy"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/norfolkjs/norfolkjs.github.io.git"
+    },
+    "keywords": [
+        "javascript",
+        "meetup",
+        "norfolk",
+        "virginia",
+        "beach"
+    ],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/norfolkjs/norfolkjs.github.io/issues"
+    },
+    "homepage": "https://github.com/norfolkjs/norfolkjs.github.io#readme",
+    "dependencies": {
+        "jakyll": "^0.5.2"
+    }
+}
