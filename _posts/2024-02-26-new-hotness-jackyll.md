@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="/stylesheets/ribbon.css" media="screen" />
 
-    <title>Norfolk.js</title>
+    <title>New Build Tool</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://rawgit.com/moment/moment/develop/min/moment.min.js"></script>
 
@@ -49,47 +49,8 @@
 
 <div class="container">
   <section id="main_content">
-    <h1>Blog</h1>
-
-<div class="posts">
-
-    <h3><a href="/posts/2024-02-26-new-hotness-jackyll.html">New Build Tool</a></h3>
-    <p>Posted: February 26, 2024</p>
-    <p>Brian made a new cool tool</p>
-    <hr />
-    <br>
-
-    <h3><a href="/posts/2016-3-21-Dont-commit-ugly-code.html">Don't Commit Your Ugly Code</a></h3>
-    <p>Posted: March 21, 2016</p>
-    <p>Cleaning up your code with Troy Connor</p>
-    <hr />
-    <br>
-
-    <h3><a href="/posts/2015-2-24-Sharpen-your-saw2.html">Sharpen Your Saw Async</a></h3>
-    <p>Posted: February 24, 2015</p>
-    <p>Hacking Async with Steve Hackbarth</p>
-    <hr />
-    <br>
-
-    <h3><a href="/posts/2014-4-21-unofficial-npm-mirror.html">Unofficial US (east) mirror for Npm</a></h3>
-    <p>Posted: April 21, 2014</p>
-    <p>This is an unofficial, but pretty good US (east) mirror for npm; this service is sponsored and maintained by norfolkjs.org.</p>
-    <hr />
-    <br>
-
-    <h3><a href="/posts/2014-2-18-Sharpen-your-saw-followup.html">Sharpen Your Saw Follow-up</a></h3>
-    <p>Posted: February 18, 2014</p>
-    <p>Steve Hackbarth presented Sharpen your Saw, discussing problem-solving using JavaScript and other useful utilities. Participants were encouraged to bring laptops to participate in code exercises.</p>
-    <hr />
-    <br>
-
-    <h3><a href="/posts/2013-12-4-meetup-kickoff.html">Norfolk.js meetup kickoff</a></h3>
-    <p>Posted: December 04, 2013</p>
-    <p>The kickoff meetup for the Norfolk.js group will be <br /><a href="http://www.meetup.com/NorfolkJS/events/150763672/">January 20, 2014</a> with beer and pizza sponsored by <a href="http://www.xtuple.com">xTuple</a>.</p>
-    <hr />
-    <br>
-
-</div>
+    <h2>New Build Tool</h2>
+<p><p> Brian made a new tool that we deployed live at NorfolkJS in Feb 2024. It is a drop in replacement for Jekyll called Jackyll.</p></p>
   </section>
 </div>
 
