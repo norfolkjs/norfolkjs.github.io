@@ -27,6 +27,6 @@
     },
     "homepage": "https://github.com/norfolkjs/norfolkjs.github.io#readme",
     "dependencies": {
-        "jakyll": "^0.5.5"
+        "jakyll": "^0.5.6"
     }
 }
