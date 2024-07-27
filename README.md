@@ -3,7 +3,7 @@
 This repository contains the source code for Norfolk.js's user group website. We strongly encourage everyone
 to contribute as much or little as they wish. Not a developer? We can use documentation and design help as well!
 
-This website is built using [jekyll](http://jekyllrb.com), a static website and blog generator. This site is hosted using [GitHub Pages](http://pages.github.com) on Github.
+This website is built using [jakyll](https://github.com/iambriansreed/jakyll) and TypeScript/Node alternative for [jekyll](http://jekyllrb.com), a static website and blog generator. This site is hosted using [GitHub Pages](http://pages.github.com) on Github.
 
 # Contributing
 
@@ -15,6 +15,7 @@ Check out the open [bugs and enhancements](https://github.com/norfolkjs/norfolkj
 
 -   [Fork](https://github.com/norfolkjs/fork) this repository. [How?](https://help.github.com/articles/fork-a-repo)
 -   Clone your fork. [How?](https://help.github.com/articles/fork-a-repo#step-2-clone-your-fork)
+-   `npm install`
 -   Start coding.
 -   Push your code to your fork. [How?](https://help.github.com/articles/fork-a-repo#push-commits)
 -   Add your name to the [humans.txt](https://github.com/norfolkjs/norfolkjs.github.io/blob/master/humans.txt).
