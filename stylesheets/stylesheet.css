@@ -308,3 +308,8 @@ hr {
   margin: 20px 0;
   padding-bottom: 10px;
 }
+
+.api_container .events .event .event-when {
+  color: #e1ae45;
+  font-weight: bold;
+}
