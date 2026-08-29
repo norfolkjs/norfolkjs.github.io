@@ -76,5 +76,10 @@ async function getData(url = '') {
   return await response.json(); // parses JSON response into native JavaScript objects
 }
 
-// The .events container is further down the page than this script tag.
-$(main)
+// The .events container is further down the page than this script tag, so wait
+// for ready. Keep the wrapper a plain function rather than passing main directly:
+// older jQuery treats an async function as [object AsyncFunction], not a function,
+// and silently never fires it.
+$(function () {
+  main();
+});
