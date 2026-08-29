@@ -3,7 +3,7 @@ layout: post
 title: Unofficial US (east) mirror for Npm
 tags: javascript, npm, norfolk, mirror
 published: true
-excerpt: This is an unofficial, but pretty good US (east) mirror for npm; this service is sponsored and maintained by norfolkjs.org.
+excerpt: This is an unofficial, but pretty good US (east) mirror for npm; this service is sponsored and maintained by norfolkjs.com.
 ---
 
 <p><a href="https://github.com/norfolkjs/npmjs.us">https://github.com/norfolkjs/npmjs.us</a></p>
