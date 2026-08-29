@@ -5,6 +5,8 @@
     "main": "index.js",
     "scripts": {
         "dev": "jakyll -dev",
+        "events": "node scripts/fetch-events.js",
+        "prebuild": "node scripts/fetch-events.js",
         "build": "jakyll -build",
         "start": "jakyll -start",
         "deploy": "jakyll -deploy"

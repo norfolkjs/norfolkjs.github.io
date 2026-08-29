@@ -3,6 +3,9 @@ name: Build & Deploy
 on:
     push:
         branches: [main]
+    # Rebuild daily so newly posted Meetup events appear without anyone pushing.
+    schedule:
+        - cron: '0 11 * * *'
     workflow_dispatch:
 
 jobs:
