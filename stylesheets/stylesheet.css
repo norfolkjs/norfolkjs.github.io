@@ -308,12 +308,3 @@ hr {
   margin: 20px 0;
   padding-bottom: 10px;
 }
-
-.api_container .sponsors {
-  background-color: #fff;
-}
-
-.api_container .sponsors img {
-  margin: 10px;
-  max-width: 300px;
-}
